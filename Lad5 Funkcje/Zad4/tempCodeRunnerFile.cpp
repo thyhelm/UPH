@@ -1,0 +1,1 @@
+n = usun(tab, n, x);
