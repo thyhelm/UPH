@@ -19,7 +19,7 @@ int main(){
     else{
         cout << "Drugi ciag jest dluzszy i ma " << napis2.size() << " znakow" << endl;
     }
-    cout << "Ciagi razem maja po " << napis1.size()+napis2.size() << " znakow" << endl;
+    cout << "Ciagi razem maja " << napis1.size()+napis2.size() << " znakow" << endl;
 }
 
 //Napisz program, który sprawdzi czy podane dwa ciągi znaków są tej samej długości,

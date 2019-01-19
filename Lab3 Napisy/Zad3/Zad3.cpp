@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     string napis1;
     cout << "Podaj napis" << endl;
-    cin >> napis1;
+    getline(cin, napis1);
     for(int i = 0; i < napis1.size(); i++){
         if (isupper(napis1[i])){
             napis1[i] = tolower(napis1[i]);

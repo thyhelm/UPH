@@ -15,7 +15,6 @@ int usun(int *t, int n, int x){
     return n-1;
 }
 
-
 int main()
 {
     cout << "Podaj liczbe elementow pierwszej tablicy: ";

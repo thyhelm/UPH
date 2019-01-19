@@ -25,11 +25,11 @@ int main()
         cout << "Podaj numer nadwozia: "; cin >> baza[i].numer_nadwozia;
     }
     while (true){
-        cout << "Wybierz co ma wykonać program: " << endl;
+        cout << "Wybierz co ma wykonac program: " << endl;
         cout << "...1...Wypisz z bazy samochody danej marki." << endl;
         cout << "...2...Wypisz z bazy samochody z danego rocznika. " << endl;
         cout << "...3...Wyszukaj samochod po numerze nadwozia " << endl;
-        cout << "Naciśnij q aby wyjść z programu" << endl;
+        cout << "Nacisnij q aby wyjsc z programu" << endl;
 
         char wyb;
         int kont=0;
@@ -44,10 +44,10 @@ int main()
                 cin >> m;
                 for (int i=0;i<n;i++){
                     if (m == baza[i].marka){
-                        cout << baza[i].marka << endl;
-                        cout << baza[i].silnik << endl;
-                        cout << baza[i].rocznik << endl;
-                        cout << baza[i].numer_nadwozia << endl;
+                        cout << "Marka: " << baza[i].marka << endl;
+                        cout << "Pojemnosc silnika: " << baza[i].silnik << endl;
+                        cout << "Rocznik: " << baza[i].rocznik << endl;
+                        cout << "Numer nadwozia: " << baza[i].numer_nadwozia << endl;
                         cout << endl;
                         kont=1;
                     }
@@ -61,10 +61,10 @@ int main()
                 cin >> r;
                 for (int i=0;i<n;i++){
                     if (r == baza[i].rocznik){
-                        cout << baza[i].marka << endl;
-                        cout << baza[i].silnik << endl;
-                        cout << baza[i].rocznik << endl;
-                        cout << baza[i].numer_nadwozia << endl;
+                        cout << "Marka: " << baza[i].marka << endl;
+                        cout << "Pojemnosc silnika: " << baza[i].silnik << endl;
+                        cout << "Rocznik: " << baza[i].rocznik << endl;
+                        cout << "Numer nadwozia: " << baza[i].numer_nadwozia << endl;
                         cout << endl;
                         kont=1;
                     }
@@ -78,10 +78,10 @@ int main()
                 cin >> nn;
                 for (int i=0;i<n;i++){
                     if (nn == baza[i].numer_nadwozia){
-                        cout << baza[i].marka << endl;
-                        cout << baza[i].silnik << endl;
-                        cout << baza[i].rocznik << endl;
-                        cout << baza[i].numer_nadwozia << endl;
+                        cout << "Marka: " << baza[i].marka << endl;
+                        cout << "Pojemnosc silnika: " << baza[i].silnik << endl;
+                        cout << "Rocznik: " << baza[i].rocznik << endl;
+                        cout << "Numer nadwozia: " << baza[i].numer_nadwozia << endl;
                         cout << endl;
                         kont=1;
                     }

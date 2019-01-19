@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 void wypelnij(float t[], int n){
     srand(time(NULL));
     for(int i=0; i<n; i++){

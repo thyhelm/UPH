@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 void wypelnij(float t[], int n){
     srand(time(NULL));
     for(int i=0; i<n; i++){
@@ -31,7 +29,7 @@ int main(){
     }
     zamien(tab1, n);
     for(int i=0; i<n; i++){
-        cout << "Jeden dolar kosztuje " << tab2[i] << " zlotych a jeden zl kosztuje " << tab1[i] << " dolarow" << endl;
+        cout << "Jeden dolar kosztuje " << tab2[i] << " zlote a jeden zl kosztuje " << tab1[i] << " dolara" << endl;
     }
     return 0;
 }
