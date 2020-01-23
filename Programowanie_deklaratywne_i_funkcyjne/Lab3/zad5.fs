@@ -1,13 +1,13 @@
 let list1 = [1;1;1;-2;2;2;3;-34;2;1;34;1;2;2;100]
 
-let zad5 sr tym x =
-    if x > sr then
+let zad5 srednia tym x =
+    if x > srednia then
         tym
     else
         x::tym
 
-let zad5v2 sr x =
-    if x > sr then
+let zad5v2 srednia x =
+    if x > srednia then
         false
     else
         true
