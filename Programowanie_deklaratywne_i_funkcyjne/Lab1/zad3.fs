@@ -15,9 +15,15 @@ let rec displayNthConc string i =
 displayNthConc string i
 
 //ciag
-let an = 10
-let j = 11
+let an, j = 10, 11
 let rec ciag an j = 
     if j = 1 then printfn "%i " an
     else printf "%i " an; ciag (an+3) (j-1)
 ciag an j
+
+
+let x, n = 2, 5
+let rec suma x n =
+    if n = 0 then x
+    else x + suma (x+1) (n-1)
+suma x n 
