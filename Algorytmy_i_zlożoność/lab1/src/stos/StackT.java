@@ -1,43 +1,41 @@
 package stos;
 
 public class StackT implements IStack {
-    int[] stack;
-    int stopien;
+    int top;
+    int[] tab;
 
-    public StackT(int maks){
-        stack = new int[maks-1];
-        stopien = 0;
+    public StackT(int x) {
+        tab = new int[x-1];
+        top = 0;
     }
 
     @Override
     public void push(int dane) {
-        stack[stopien] = dane;
-        stopien++;
+        tab[top] = dane;
+        top++;
     }
 
     @Override
     public void pop() {
-        if (stopien >= 0){
-            stack[stopien] = 0;
-            stopien--;
+        if(top>=0) {
+            tab[top-1] = 0;
+            top--;
         }
-        else {
-            System.out.println("Stos jest pusty");
-        }
+        else {System.err.println("Stack is empty");}
     }
 
     @Override
     public int top() {
-        return stack[stopien-1];
+        return tab[top-1];
     }
 
     @Override
     public boolean isEmpty() {
-        return stack[0]==0;
+        return tab[0]==0;
     }
 
-    public void wypisz() {
-        for(int x : stack) {
+    public void wypisz(){
+        for(int x:tab){
             System.out.println(x);
         }
     }
