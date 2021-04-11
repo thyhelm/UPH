@@ -1,0 +1,5 @@
+Logcat umożliwia logowanie wiadomości podczas działania aplikacji. Przykładowe komendy
+umożliwiające logowanie: Log.e(tag, msg), Log.d(tag, msg) Etc
+
+Device File Explorer - wybieramy View->Tool Windows-> Device File Explorer.
+Po wybraniu mamy możliwość przeglądania plików na urządzeniu
