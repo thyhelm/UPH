@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     var myStrings : MutableList<String> = mutableListOf()
     var index = 0
     lateinit var adapter: ArrayAdapter<String>
+    lateinit var adapterRemove: ArrayAdapter<String>
     lateinit var addOneButton: Button;
     lateinit var removeButton: Button;
     lateinit var cancelButton: Button;
@@ -22,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,
-                myStrings)
-        val listView : ListView = findViewById(R.id.listView)
-        listView!!.adapter = adapter
         this.setListViewType(false)
 
         addOneButton = findViewById(R.id.buttonAdd);
@@ -36,17 +33,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun add(v: View) {
-        myStrings.add("Michał to pajac " + index)
+        myStrings.add("Item " + index)
         index++;
         adapter.notifyDataSetChanged()
     }
 
-     fun remove(v: View) {
+    fun remove(v: View) {
         this.setListViewType(true)
-        var adapterRemove = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, myStrings)
-        val listView : ListView = findViewById(R.id.listView)
-        listView.adapter = adapterRemove
         addOneButton.visibility = View.GONE;
         removeButton.visibility = View.GONE;
         cancelButton.visibility = View.VISIBLE;
@@ -64,17 +57,34 @@ class MainActivity : AppCompatActivity() {
     fun setListViewType(lV: Boolean) {
         val listView : ListView = findViewById(R.id.listView)
         if (lV) {
+            adapterRemove = ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_multiple_choice, myStrings)
+            listView.adapter = adapterRemove
             listView.setOnItemClickListener { parent, view, position, id ->
                 Log.d("TagName", "position:$position id:$id")
                 var element = view as CheckedTextView
                 element.isChecked = !element.isChecked
             }
         } else {
+            adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,
+                    myStrings)
+            listView!!.adapter = adapter
             listView.setOnItemClickListener { parent, view, position, id ->
                 Log.d("TagName", "position:$position id:$id")
                 var element = adapter.getItem(position)
                 adapter.remove(element)
                 adapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    fun delete(v: View) {
+        val listView : ListView = findViewById(R.id.listView)
+        for (i in 0 until myStrings.size) {
+            var v = listView.getChildAt(i) as CheckedTextView;
+            if(v != null && v.isChecked) {
+                adapterRemove.remove(v.text as String);
+                adapterRemove.notifyDataSetChanged();
             }
         }
     }

@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>Krzywe Beziera w Canvasie</title>
+</head>
+<body>
+<canvas id="CanvasBez" width="400" height="200"></canvas>
+<script type="text/javascript">
+var canvas = document.getElementById("CanvasBez")
+var mojObiekt = canvas.getContext('2d'); 
+mojObiekt.beginPath(); 
+mojObiekt.lineWidth="2";
+mojObiekt.strokeStyle="black"; 
+mojObiekt.moveTo(20,20);
+mojObiekt.lineTo(20,200);
+mojObiekt.bezierCurveTo(150,200,150,20,20,20);
+mojObiekt.stroke();
+</script>
+</body>
+</html>
