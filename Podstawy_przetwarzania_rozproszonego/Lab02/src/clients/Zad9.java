@@ -59,14 +59,14 @@ public class Zad9 {
             Collections.sort(numbers);
             endTime = System.nanoTime();
 
-            long durationSer = (endTime - startTime)/1000000000;
+            long durationSer = (endTime - startTime)/1000000;
 
             for(int i=0; i<numbers.size(); i++) {
 
                 System.out.println(numbers.get(i));
             }
-            System.out.println("Czas sortowania localnie: "+ durationLoc+"s");
-            System.out.println("Czas sortowania zdalnie: "+ durationSer+"s");
+            System.out.println("Czas sortowania localnie: "+ durationLoc+"ms");
+            System.out.println("Czas sortowania zdalnie: "+ durationSer+"ms");
         } catch (Exception ex) {
             System.err.println("Wystąpił błąd: "+ex.getLocalizedMessage());
         }
