@@ -43,14 +43,10 @@ public class ProcessC extends Thread {
     @Override
     public void run() {
         try {
-
             while (true) {
-
-
                 TextMessage message = session.createTextMessage("Request " + requestN + " from Process C");
                 message.setIntProperty("producer", 2);
                 producerR.send(message);
-
 
                 message = (TextMessage) consumer.receive();
                 if (message == null) {
@@ -62,11 +58,7 @@ public class ProcessC extends Thread {
                 message = session.createTextMessage("Request " + requestN++ + " finished by Process C");
                 producerF.send(message);
 
-
                 sleepRandomTime();
-
-
-
             }
         } catch (JMSException e) {
             e.printStackTrace();

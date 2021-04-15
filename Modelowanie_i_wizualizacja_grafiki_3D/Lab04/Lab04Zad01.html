@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dawid Cieslak Zad 1</title>
+</head>
+
+<body onload="draw()">
+    <form>
+        Border-size: <input type="text" name="b" value="1" /><br />
+        Border-color: <input type="color" name="bc" value="#000000" /><br />
+        Color: <input type="color" name="c" value="#FFFFFF" /><br />
+
+        <button type="button" onclick="draw(this.form);">Rysuj</button>
+    </form>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script type="text/javascript">
+
+        function draw(form) {
+            var canvas = document.getElementById("canvas")
+            var context = canvas.getContext("2d");
+            context.fillStyle = "white";
+            context.fillRect(0, 0, 500, 500);
+
+            let color = form ? form.c.value : "#FFFFFF";
+            let borderColor = form ? form.bc.value : "#000000";
+            let border = form ? +form.b.value : 1;
+
+            mojObiekt = canvas.getContext('2d');
+            mojObiekt.lineWidth = border;
+            mojObiekt.strokeStyle = borderColor;
+
+            mojObiekt.beginPath();
+            mojObiekt.moveTo(100, 120);
+            mojObiekt.lineTo(100, 100);
+            mojObiekt.bezierCurveTo(200, 100, 200, 250, 100, 250);
+            mojObiekt.lineTo(100, 230);
+            mojObiekt.bezierCurveTo(170, 230, 170, 120, 100, 120);
+            mojObiekt.fillStyle = color;
+            mojObiekt.fill();
+            mojObiekt.stroke();
+
+
+            mojObiekt2 = canvas.getContext('2d');
+            mojObiekt2.lineWidth = border;
+            mojObiekt2.strokeStyle = borderColor;
+
+            mojObiekt2.beginPath();
+            mojObiekt2.moveTo(90, 100);
+            mojObiekt2.lineTo(90, 250);
+            mojObiekt2.lineTo(110, 250);
+            mojObiekt2.lineTo(110, 100);
+            mojObiekt2.lineTo(90, 100);
+            mojObiekt2.fillStyle = color;
+            mojObiekt2.fill();
+            mojObiekt2.stroke();
+        }
+
+    </script>
+
+</body>
+
+</html>

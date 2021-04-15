@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab07</string>
+    <string name="show_toast">Show toast</string>
+    <string name="show_doge">Show Doge</string>
+    <string name="show_dialog">Show Dialog</string>
+    <string name="show_multi_noti">Show Multi Noti</string>
+    <string name="show_single_noti">Show single noti</string>
+    <string name="show_custom">Show Custom</string>
+</resources>

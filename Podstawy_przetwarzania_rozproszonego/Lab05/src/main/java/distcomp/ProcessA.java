@@ -43,18 +43,13 @@ public class ProcessA extends Thread {
         }
     }
 
-
     @Override
     public void run() {
         try {
-
             while (true) {
-
-
                 TextMessage message = session.createTextMessage("Request " + requestN + " from Process A");
                 message.setIntProperty("producer", 0);
                 producerR.send(message);
-
 
                 message = (TextMessage) consumer.receive();
                 if (message == null) {
@@ -66,11 +61,7 @@ public class ProcessA extends Thread {
                 message = session.createTextMessage("Request " + requestN++ + " finished by Process A");
                 producerF.send(message);
 
-
                 sleepRandomTime();
-
-
-
             }
         } catch (JMSException e) {
             e.printStackTrace();
@@ -80,5 +71,4 @@ public class ProcessA extends Thread {
     public void destroy() throws JMSException {
         con.close();
     }
-
 }

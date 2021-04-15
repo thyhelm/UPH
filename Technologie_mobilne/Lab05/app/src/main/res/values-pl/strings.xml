@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="login">Login</string>
+    <string name="password">Hasło</string>
+    <string name="app_name">Lab05</string>
+    <string name="hint">Zaloguj się!</string>
+    <string name="remember">Zapamiętaj mnie</string>
+    <string name="login_empty">Pole login jest puste</string>
+    <string name="password_empty">Pole hasło jest puste</string>
+    <string name="login_data_save_error">Błąd z zapamiętaniem danych</string>
+    <string name="add_contact_button">Dodaj kontakt</string>
+    <string name="title_activity_debtors_list">Witaj, %1$s</string>
+</resources>

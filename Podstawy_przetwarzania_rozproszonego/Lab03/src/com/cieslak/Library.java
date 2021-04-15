@@ -268,7 +268,7 @@ public class Library {
         server.createContext("/return", (HttpExchange httpExchange) -> {
 
             Map<String, Object> urlParameters = new HashMap<String, Object>();
-            String query = query = httpExchange.getRequestURI().getQuery();
+            String query = httpExchange.getRequestURI().getQuery();
             parseQuery(query, urlParameters);
 
             int nr = Integer.parseInt((String) urlParameters.get("nr"));

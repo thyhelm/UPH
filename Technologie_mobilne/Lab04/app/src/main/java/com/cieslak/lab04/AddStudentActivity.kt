@@ -51,11 +51,15 @@ class AddStudentActivity : AppCompatActivity() {
                 //pobranie pierwszego wiersza
                 cursor!!.moveToFirst()
                 // Pobranie kolumny o odpowiednim indeksie
-                val column: Int =
+                var column: Int =
                     cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
                 val displayName: String = cursor.getString(column)
-                val tv = findViewById<View>(R.id.StudentNameEditText) as TextView
-                tv.text = displayName
+                val name = findViewById<View>(R.id.StudentNameEditText) as TextView
+                name.text = displayName
+                column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                val displayNumber: String = cursor.getString(column)
+                val number = findViewById<View>(R.id.EditTextPhoneNumber) as TextView
+                number.text = displayNumber
             }
         }
     }

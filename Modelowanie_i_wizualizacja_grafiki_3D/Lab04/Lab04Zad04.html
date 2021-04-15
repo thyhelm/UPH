@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mateusz Bieliński Zad 4</title>
+    <script type="text/javascript">
+        function draw(form) {
+            var canvas = document.getElementById("image");
+            var context = canvas.getContext("2d");
+            var line = canvas.getContext("2d");
+            var light = canvas.getContext("2d");
+
+
+            // clear
+            context.fillStyle = "white";
+            context.fillRect(0, 0, 1000, 1000);
+            context.save();
+
+            context.translate(200, 300);
+            var minx = 0;
+            var maxx = 1000;
+            var miny = 0;
+            var maxy = 1000;
+
+            var a = 100;
+            var x1 = 0;
+            var y1 = 0;
+            var z1 = 0;
+            var z2 = a;
+            var x2;
+            var y2;
+            var x2 = x1 + a;
+            var y2 = y1 + a;
+            var lightX = form ? parseInt(form.lightX.value) : 200;
+            var lightY = form ? parseInt(form.lightY.value) : 200;
+            var lightZ = form ? parseInt(form.lightZ.value) : 100;
+            var color = form ? hexToRgb(form.color.value) : hexToRgb("#e66465");
+            var side1Center = {
+                x: a / 2,
+                y: a / 2,
+                z: 0
+            };
+            var side2Center = {
+                x: a / 2,
+                y: a,
+                z: a / 2
+            };
+            var side3Center = {
+                x: a,
+                y: a / 2,
+                z: a / 2
+            };
+            var drawLight = true;
+
+
+
+            var lightToSide1 = Math.sqrt(Math.pow((side1Center.x - lightX), 2) + Math.pow((side1Center.y - lightY), 2) + Math.pow((side1Center.z - lightZ), 2));
+            var lightToSide2 = Math.sqrt(Math.pow((side2Center.x - lightX), 2) + Math.pow((side2Center.y - lightY), 2) + Math.pow((side2Center.z - lightZ), 2));
+            var lightToSide3 = Math.sqrt(Math.pow((side3Center.x - lightX), 2) + Math.pow((side3Center.y - lightY), 2) + Math.pow((side3Center.z - lightZ), 2));
+            if (x1 < lightX && x2 > lightX && y1 < lightY && y2 > lightY && z1 < lightZ && z2 > lightZ) {
+                lightToSide1 = 1000;
+                lightToSide2 = 1000;
+                lightToSide3 = 1000;
+                drawLight = false;
+            }
+            var factorSide1 = (300 - lightToSide1) / 300;
+            var factorSide2 = (300 - lightToSide2) / 300;
+            var factorSide3 = (300 - lightToSide3) / 300;
+
+            if (form) {
+                a = parseInt(form.a.value);
+            }
+
+
+            var alpha = (Math.PI / 180) * 45;
+            var ctg = 1 / Math.tan(alpha);
+
+            var r = ctg * z2;
+            var lightR = ctg * lightZ;
+
+
+            var fi = (Math.PI / 180) * 30;
+            var sin = Math.sin(fi);
+            var cos = Math.cos(fi);
+
+            var xp1 = x1 + r * cos;
+            var yp1 = y1 + r * sin;
+            var xp2 = x2 + r * cos;
+            var yp2 = y2 + r * sin;
+            var lightpX = lightX + lightR * cos;
+            var lightpY = lightY + lightR * cos;
+
+            line.beginPath();
+            line.lineTo(x1, -y1);
+            line.lineTo(x2, -y1);
+            line.lineTo(x2, -y2);
+            line.lineTo(x1, -y2);
+            line.lineTo(x1, -y1);
+            line.fillStyle = `rgb(${color.r * factorSide1}, ${color.g * factorSide1}, ${color.b * factorSide1})`;
+            line.fill();
+            line.stroke();
+
+            line.beginPath();
+            line.lineTo(x1, -y2);
+            line.lineTo(xp1, -yp2);
+            line.lineTo(xp2, -yp2);
+            line.lineTo(x2, -y2);
+            line.fillStyle = `rgb(${color.r * factorSide2}, ${color.g * factorSide2}, ${color.b * factorSide2})`;
+            line.fill();
+            line.stroke();
+
+
+            line.beginPath();
+            line.lineTo(x2, -y1);
+            line.lineTo(xp2, -yp1);
+            line.lineTo(xp2, -yp2);
+            line.lineTo(x2, -y2);
+            line.stroke();
+            line.fillStyle = `rgb(${color.r * factorSide3}, ${color.g * factorSide3}, ${color.b * factorSide3})`;
+            line.fill();
+
+            if (drawLight) {
+                line.beginPath();
+                light.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
+                light.arc(lightpX, -lightpY, 15, 0, 2 * Math.PI);
+                light.stroke();
+                light.fill();
+            }
+
+            context.restore();
+        }
+
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+    </script>
+</head>
+
+<body onload="draw();">
+    <form>
+        a: <input type="text" name="a" value="100" /><br />
+        Swiatło x <input id="number" name="lightX" type="number" value="200" max="400"><br />
+        Swiatło y <input id="number" name="lightY" type="number" value="200" max="200"><br />
+        Swiatło z <input id="number" name="lightZ" type="number" value="100" max="300"><br />
+        Kolor <input type="color" name="color" value="#e66465"><br />
+        <button type="button" onclick="draw(this.form);">
+            Rysuj
+        </button>
+    </form>
+    <br />
+    <canvas id="image" width="1000" height="1000">
+    </canvas>
+</body>
+
+</html>

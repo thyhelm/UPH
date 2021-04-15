@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        cm.name = "Cies"
+        cm.name = "No name"
         cm.counter = 3
 
         var editTextName = findViewById<EditText>(R.id.EditTextName)
@@ -46,5 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     public fun cleanCounter(v: View){
         cm.cleanCounter()
+        var displayText = findViewById<TextView>(R.id.TextViewDisplay)
+        displayText.text = cm.showMotivationText()
     }
 }

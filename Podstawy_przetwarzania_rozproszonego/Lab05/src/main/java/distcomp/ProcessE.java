@@ -22,7 +22,6 @@ public class ProcessE extends Thread {
 
         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-
         Queue queue = session.createQueue("R");
         consumerR = session.createConsumer(queue);
 
@@ -32,15 +31,11 @@ public class ProcessE extends Thread {
         Queue queue1 = session.createQueue("0");
         producers[0] = session.createProducer(queue1);
 
-
         Queue queue2 = session.createQueue("1");
         producers[1] = session.createProducer(queue2);
 
         Queue queue3 = session.createQueue("2");
         producers[2] = session.createProducer(queue3);
-
-
-
     }
 
     private void sleepRandomTime() {
@@ -51,15 +46,10 @@ public class ProcessE extends Thread {
         }
     }
 
-
-
     @Override
     public void run() {
         try {
-
             while (true) {
-
-
                 TextMessage message = (TextMessage) consumerR.receive();
                 if (message == null) {
                     break;
@@ -68,22 +58,18 @@ public class ProcessE extends Thread {
 
                 System.out.println("Main Process: " + res);
 
-
                 sleepRandomTime();
                 int producerId = message.getIntProperty("producer");
                 message = session.createTextMessage("response nr " + response++);
                 producers[producerId].send(message);
 
-
                 message = (TextMessage) consumerF.receive();
                 if (message == null) {
                     break;
                 }
+
                 res = message.getText();
                 System.out.println("Main Process: " + res);
-
-
-
             }
         } catch (JMSException e) {
             e.printStackTrace();

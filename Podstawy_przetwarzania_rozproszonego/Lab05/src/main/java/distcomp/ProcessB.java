@@ -49,10 +49,7 @@ public class ProcessB extends Thread {
     @Override
     public void run() {
         try {
-
             while (true) {
-
-
                 TextMessage message = session.createTextMessage("Request " + requestN + " from Process B");
                 message.setIntProperty("producer", 1);
                 producerR.send(message);
@@ -68,11 +65,7 @@ public class ProcessB extends Thread {
                 message = session.createTextMessage("Request " + requestN++ + " finished by Process B");
                 producerF.send(message);
 
-
                 sleepRandomTime();
-
-
-
             }
         } catch (JMSException e) {
             e.printStackTrace();

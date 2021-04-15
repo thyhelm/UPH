@@ -84,8 +84,8 @@ class MainActivity : AppCompatActivity() {
             var v = listView.getChildAt(i) as CheckedTextView;
             if(v != null && v.isChecked) {
                 adapterRemove.remove(v.text as String);
-                adapterRemove.notifyDataSetChanged();
             }
         }
+        this.setListViewType(false);
     }
 }

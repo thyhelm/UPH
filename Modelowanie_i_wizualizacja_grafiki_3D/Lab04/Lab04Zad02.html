@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dawid Cieslak Zad 2</title>
+    <script type="text/javascript">
+        function draw(form) {
+            let canvas = document.getElementById("canvas")
+            var context = canvas.getContext("2d");
+            context.fillStyle = "white";
+            context.fillRect(0, 0, 1900, 1000);
+
+            let line = canvas.getContext("2d");
+            line.fillStyle = "black";
+            line.strokeStyle = "black";
+            let point = canvas.getContext('2d');
+            let number = canvas.getContext("2d");
+            number.beginPath();
+            number.fillStyle = "black";
+            number.font = "15pt Times New Roman";
+
+            point.fillStyle = "black";
+
+            let xA = 50;
+            let yA = 50;
+            let xB = 550;
+            let yB = 350;
+            let n = form ? parseInt(form.n.value) : 5;
+            let m = form ? parseInt(form.m.value) : 4;
+            let k = 0;
+
+            for (let j = yA; j <= yB; j += (yB - yA) / m) {
+                line.beginPath();
+                line.moveTo(xA, j);
+                line.lineTo(xB, j);
+                line.stroke();
+                for (let i = xA; i <= xB; i += (xB - xA) / n) {
+                    k++;
+                    number.fillText(k, i, j);
+                    point.fillRect(i, j, 5, 5);
+                }
+            }
+            for (let i = xA; i <= xB; i += (xB - xA) / n) {
+                line.beginPath();
+                line.moveTo(i, yA);
+                line.lineTo(i, yB);
+                line.stroke();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <body onload="draw()">
+        <form>
+            n <input id="number" name="n" type="number" value="5">
+            m <input id="number" name="m" type="number" value="4">
+
+            <button type="button" onclick="draw(this.form);">Rysuj</button>
+        </form>
+        <canvas id="canvas" width="1900" height="1000"></canvas>
+
+    </body>
+
+
+</body>
+
+</html>

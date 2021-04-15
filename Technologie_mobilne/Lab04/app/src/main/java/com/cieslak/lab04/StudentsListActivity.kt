@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.CheckedTextView
 import android.widget.ListView
 
 class StudentsListActivity : AppCompatActivity() {
@@ -12,6 +14,8 @@ class StudentsListActivity : AppCompatActivity() {
     var index = 0;
     lateinit var adapter: StudentsAdapter;
     lateinit var studentsListView: ListView;
+    lateinit var addButton: Button;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students_list)
@@ -21,11 +25,12 @@ class StudentsListActivity : AppCompatActivity() {
         studentsListView!!.adapter = adapter
 
         val intent = Intent(this, AddStudentActivity::class.java)
-        var addButton = findViewById<Button>(R.id.addButton)
+        addButton = findViewById<Button>(R.id.addButton)
 
         addButton.setOnClickListener {
             startActivityForResult(intent,1)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
